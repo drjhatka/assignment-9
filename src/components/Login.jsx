@@ -1,4 +1,5 @@
 import { FaGithub, FaGoogle } from "react-icons/fa6";
+import {Link} from 'react-router-dom'
 const handleLogin = (event)=>{
     event.preventDefault()
     const data = new FormData(event.target)
@@ -28,16 +29,20 @@ function Login() {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name="password" placeholder="password" className="input input-bordered" required />
-                            <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
+                            
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Login</button>
                         </div>
                         
                     </form>
+                    <div className="flex gap-4 pb-6 border-b-2 border-t-2 items-center justify-center text-red-600 font-semibold text-sm ">
+                        <h1>No Account yet?
+                            </h1>
+                        <Link to='/register' className="underline">Sign up</Link> 
+                    </div>
                     <div className="flex flex-col  gap-4 mb-4 ">
+
                             <div className="font-bold text-center">Or Login using</div>
                             <div className="flex gap-5 justify-center">
                                 <button className="border-2 px-2 py-2 rounded-lg bg-red-400 text-white font-semibold"> <FaGoogle></FaGoogle></button>
