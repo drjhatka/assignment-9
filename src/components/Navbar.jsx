@@ -6,7 +6,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 function Navbar() {
   
     const {user, logOut} = useContext(AuthContext)
-    console.log(user.email)
+   // console.log(user.email)
     const navigate = useNavigate()
     
     const handleLogout= ()=>{
@@ -52,36 +52,36 @@ function Navbar() {
                 }
                 
                 <div className="navbar-end">
-                    <div className='font-semibold text-red-600 mr-4'>{user.email}</div>
+                    <div className='font-semibold text-red-600 mr-4'>{user?.email}</div>
                     <div className="dropdown dropdown-end">
+                        {user &&
                         <div tabIndex={0} role="button" className="  btn btn-ghost btn-circle avatar">
                             {
                                 user?.photoUrl?  <div className="w-10 rounded-full">
                                     <img alt="Tailwind CSS Navbar component" src={user?.photoUrl} />
-                                </div>:
-                                   <button>Logout</button>
+                                </div>:''
 
                             }
                         </div>
-
+                        }
+                        {   user ?
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                        
                             <li>
                                 {
-                                    user && <a className="justify-between">
+                                    user && <Link to="" className="justify-between">
                                     Profile
                                         <span className="badge">Edit</span>
-                                    </a>
+                                    </Link>
                                 }
                                 
                             </li>
-                            <li>{
-                                    user && <button onClick={()=>handleLogout()} className='bg-green-600 text-white hover:bg-red-500'>
-                                    Logout
-                                </button>
-                                }
-
-                            </li>
-                        </ul>
+                            <li><button onClick={()=>handleLogout()} className='bg-green-600 text-white hover:bg-red-500'>Logout </button></li>
+                        </ul>:
+                        <div >
+                            <Link className='flex border-2 items-center  justify-center font-semibold bg-green-400 w-30 px-10 me-10 text-white py-3 rounded-full' to='/login'>Login</Link>
+                        </div>
+                            }
                     </div>
                 </div>
             </div>

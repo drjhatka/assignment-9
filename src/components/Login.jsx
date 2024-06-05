@@ -1,14 +1,15 @@
 
-import { FaGithub, FaGoogle } from "react-icons/fa6";
+import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from "react-icons/fa6";
 import {Link, Navigate, useLocation, useNavigate, useNavigation} from 'react-router-dom'
 import { AuthContext } from "./AuthProvider";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
 
 
 
 function Login() {
+    const [visible, setVisible] = useState(false)
     const navigate = useNavigate()
     const location = useLocation()
     const {createUser, setUser, userLogIn} = useContext(AuthContext);
@@ -56,7 +57,7 @@ function Login() {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+                            <input type={visible? 'text':'password'} name="password" placeholder="password" className="input input-bordered" required />
                             
                         </div>
                         <div className="form-control mt-6">
@@ -64,6 +65,12 @@ function Login() {
                         </div>
                         
                     </form>
+                    <div className='absolute top-[38%] left-[77%]'>
+                                <button  onClick={()=>setVisible(!visible)}>
+                                    {visible?<FaEye className='text-xl'></FaEye>:<FaEyeSlash className='text-xl'></FaEyeSlash>}
+                                </button>
+
+                        </div>
                     <div className="flex gap-4 pb-6 border-b-2 border-t-2 items-center justify-center text-red-600 font-semibold text-sm ">
                         <h1>No Account yet?
                             </h1>

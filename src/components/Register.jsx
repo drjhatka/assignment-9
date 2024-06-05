@@ -4,6 +4,8 @@ import { AuthContext } from './AuthProvider'
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FaRegEye } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 
 function Register() {
     const {createUser, setUser} = useContext(AuthContext);
@@ -74,8 +76,8 @@ function Register() {
                             </div>
                             
                         </form>
-                        <div className='absolute top-[62%] left-[65%]'>
-                                <button className='btn btn-primary bottom-32' onClick={()=>setVisible(!visible)}>Show</button>
+                        <div className='absolute top-[65%] left-[77%]'>
+                                <button  onClick={()=>setVisible(!visible)}>{visible?<FaEye className='text-xl'></FaEye>:<FaEyeSlash className='text-xl'></FaEyeSlash>}</button>
 
                         </div>
                         <div className="flex gap-4 pb-6 border-b-2 border-t-2 items-center justify-center text-red-600 font-semibold text-sm ">
