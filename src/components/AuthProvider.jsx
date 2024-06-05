@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth'
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { app } from '../firebase'
 import { useNavigate } from 'react-router-dom';
@@ -21,6 +21,9 @@ function AuthProvider({children}) {
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
+    const externalLogin= (provider)=>{
+        return signInWithPopup(auth, provider)
+    }
     const logOut = ()=>{
             signOut(auth).then(()=>{
                 //redirect to login page
@@ -36,6 +39,7 @@ function AuthProvider({children}) {
             displayName:displayName, photoURL:photoUrl
         })
     }
+
     useEffect(()=>{
         const unsubsribe = onAuthStateChanged(auth,(currentUser)=>{
                 setUser(currentUser);
@@ -51,6 +55,7 @@ function AuthProvider({children}) {
         createUser,
         setUser,
         userLogIn,
+        externalLogin,
         logOut,
         profileUpdate,
     }

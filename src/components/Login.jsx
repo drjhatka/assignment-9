@@ -5,15 +5,17 @@ import { AuthContext } from "./AuthProvider";
 import { useContext, useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { ToastContainer, toast } from "react-toastify";
+import { GoogleAuthProvider } from "firebase/auth";
 
 
 
 
 function Login() {
+    const {user, setUser, userLogIn, externalLogin} = useContext(AuthContext);
+    const googleProvider= new GoogleAuthProvider()
     const [visible, setVisible] = useState(false)
     const navigate = useNavigate()
     const location = useLocation()
-    const {user, setUser, userLogIn} = useContext(AuthContext);
     if(user){
         return <Navigate to="/"></Navigate>
     }
@@ -40,6 +42,10 @@ function Login() {
 
          }//end else
     }// end function
+
+    const handleExternalLogin=(provider)=>{
+        externalLogin(provider)
+    }
     return (
         
           <>  <Navbar></Navbar>
@@ -85,7 +91,7 @@ function Login() {
 
                             <div className="font-bold text-center">Or Login using</div>
                             <div className="flex gap-5 justify-center">
-                                <button className="border-2 px-2 py-2 rounded-lg bg-red-400 text-white font-semibold"> <FaGoogle></FaGoogle></button>
+                                <button onClick={()=>handleExternalLogin(googleProvider)} className="border-2 px-2 py-2 rounded-lg bg-red-400 text-white font-semibold"> <FaGoogle></FaGoogle></button>
                                 <button className="border-2 px-2 py-2 rounded-lg bg-blue-400 text-white font-semibold"><FaGithub></FaGithub></button>
                             </div>
                         </div>
