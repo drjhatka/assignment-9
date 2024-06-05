@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
@@ -10,7 +10,7 @@ import Root from './components/Root.jsx';
 import Home from './components/Home.jsx';
 import Login from './components/Login.jsx';
 import Register from './components/Register.jsx';
-import AuthProvider from './components/AuthProvidex.jsx';
+import AuthProvider from './components/AuthProvider.jsx';
 import PrivateRoute from './PrivateRoute.jsx';
 
 const router = createBrowserRouter([
@@ -21,6 +21,10 @@ const router = createBrowserRouter([
       {
         path:'/',
         element:<PrivateRoute><Home></Home></PrivateRoute>,
+        // loader:()=>{
+        //     return fetch('estate_data.json').then(res=>res.json().then(data=>console.log(data)))
+          
+        // },
       },
       {
         path: '/login',

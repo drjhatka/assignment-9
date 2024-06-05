@@ -1,35 +1,40 @@
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { app } from '../firebase'
+import { useNavigate } from 'react-router-dom';
 
 export const AuthContext = createContext({})
 
 function AuthProvider({children}) {
-    const [user, setUser] = useState(null);
+    const [user, setUser]           = useState(null);
+    const [loading, setLoading]     = useState(true)
+    
     const auth = getAuth(app);
 
     const createUser = (email, password,name='Not Set', photoUrl='Not Set')=>{
         //return promise
-        return createUserWithEmailAndPassword(auth, email,password);
+        setLoading(true)
+        return createUserWithEmailAndPassword(auth, email,password)
         
     }
     const userLogIn = (email, password)=>{
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
-    const loggedout = (auth)=>{
-        useEffect(()=>{
+    const logOut = ()=>{
             signOut(auth).then(()=>{
-                //setUser(null)
-             }).catch(error,()=>{
-                console.log(error)
-                
+                //redirect to login page
+            setLoading(true)
+             }).catch((error)=>{
+                toast(error)  
              });
-        },[])
+        }
        
-    }
+    
     useEffect(()=>{
         const unsubsribe = onAuthStateChanged(auth,(currentUser)=>{
                 setUser(currentUser);
+                setLoading(false)
             })
         
         return ()=>{unsubsribe()}
@@ -39,8 +44,8 @@ function AuthProvider({children}) {
         createUser,
         setUser,
         userLogIn,
-        loggedout,
-
+        logOut,
+        loading
     }
     return (
        <AuthContext.Provider value ={authInfo} >

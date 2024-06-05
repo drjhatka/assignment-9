@@ -1,12 +1,13 @@
 import { useContext, useState } from 'react'
 import {Link} from 'react-router-dom'
-import { AuthContext } from './AuthProvidex'
+import { AuthContext } from './AuthProvider'
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Register() {
     const {createUser, setUser} = useContext(AuthContext);
+    const [visible, setVisible] = useState(false)
     const handleRegister = (e)=>{
         e.preventDefault();
         const fields = [e.target.name.value,
@@ -39,7 +40,7 @@ function Register() {
                     <div className="text-center lg:text-left">
                             <h1 className="text-2xl font-bold">Register Now</h1>
                     </div>
-                    <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                    <div className="card relative shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form className="card-body" onSubmit={(e)=>handleRegister(e)}>
                             <div className="form-control">
                                 <label className="label">
@@ -63,20 +64,24 @@ function Register() {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+                                <input type={!visible?'password':'text'} name="password" placeholder="password" className="input input-bordered" required />
                                 
                             </div>
                             <div className="form-control mt-6">
-                                <button type='submit' className="btn btn-primary">Login</button>
+                                <button type='submit' className="btn btn-primary">Register</button>
                             </div>
                             
                         </form>
+                        <div className='absolute top-[62%] left-[65%]'>
+                                <button className='btn btn-primary bottom-32' onClick={()=>setVisible(!visible)}>Show</button>
+
+                        </div>
                         <div className="flex gap-4 pb-6 border-b-2 border-t-2 items-center justify-center text-red-600 font-semibold text-sm ">
                             <h1>Already have an account?
                                 </h1>
                             <Link to='/login' className="underline">Sign in</Link> 
                         </div>
-                    
+
                     </div>
                 </div>
             </div>

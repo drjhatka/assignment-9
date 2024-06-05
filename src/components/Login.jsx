@@ -1,7 +1,7 @@
 
 import { FaGithub, FaGoogle } from "react-icons/fa6";
-import {Link} from 'react-router-dom'
-import { AuthContext } from "./AuthProvidex";
+import {Link, Navigate, useNavigate} from 'react-router-dom'
+import { AuthContext } from "./AuthProvider";
 import { useContext } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -9,6 +9,8 @@ import { ToastContainer, toast } from "react-toastify";
 
 
 function Login() {
+    const navigate = useNavigate()
+
     const {createUser, setUser, userLogIn} = useContext(AuthContext);
     const handleLogin = (event)=>{
         event.preventDefault()
@@ -21,9 +23,12 @@ function Login() {
          
          else{
             //sign in existing user
-            userLogIn(data.get('email'), data.get('password')).then(user=>setUser(user)).catch(error=>{
+            userLogIn(data.get('email'), data.get('password')).then(user=>{
+                setUser(user)
+                navigate('/')
+            }).catch(error=>{
                 //notify user
-                toast(error)
+                toast(error.message)
                 //redirect to homepage
             })
          }//end else

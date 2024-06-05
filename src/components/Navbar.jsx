@@ -1,19 +1,21 @@
 import React, { useContext, useEffect } from 'react'
 import { BsBuildings } from "react-icons/bs";
-import { AuthContext } from './AuthProvidex';
-import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from './AuthProvider';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 function Navbar() {
-    const {user, loggedout} = useContext(AuthContext)
+    const {user, logOut} = useContext(AuthContext)
     const navigate = useNavigate()
     
-    const handleLogout= (e)=>{
-        e.preventDefault()
-        loggedout();
-        //redirect to login page
+    const handleLogout= ()=>{
+        //logout redirect to login page
+        logOut()
         navigate('/login')
+        
+           // return <Navigate to='/login'></Navigate>
+
     }
-    console.log(user?user:'null at')
+    //console.log(user?user:'null at')
     return (
         <div className=' bg-base-200'>
             <div className="navbar bg-base-100">
@@ -57,9 +59,9 @@ function Navbar() {
                         <div tabIndex={0} role="button" className="  btn btn-ghost btn-circle avatar">
                             {
                                 user?.photoUrl?  <div className="w-10 rounded-full">
-                                    <img alt="Tailwind CSS Navbar component" src={user.photoUrl} />
+                                    <img alt="Tailwind CSS Navbar component" src={user?.photoUrl} />
                                 </div>:
-                                   <a href="">Logout</a>
+                                   <button>Logout</button>
 
                             }
                         </div>
@@ -75,7 +77,7 @@ function Navbar() {
                                 
                             </li>
                             <li>{
-                                    user && <button onClick={(e)=>handleLogout(e)} className='bg-green-600 text-white hover:bg-red-500'>
+                                    user && <button onClick={()=>handleLogout()} className='bg-green-600 text-white hover:bg-red-500'>
                                     Logout
                                 </button>
                                 }
