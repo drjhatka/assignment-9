@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { BsBuildings } from "react-icons/bs";
+import { AuthContext } from './AuthProvidex';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Navbar() {
+    const {user, loggedout} = useContext(AuthContext)
+    const navigate = useNavigate()
+    
+    const handleLogout= (e)=>{
+        e.preventDefault()
+        loggedout();
+        //redirect to login page
+        navigate('/login')
+    }
+    console.log(user?user:'null at')
     return (
         <div className=' bg-base-200'>
             <div className="navbar bg-base-100">
@@ -24,35 +36,51 @@ function Navbar() {
                     </div>
                     <div className='flex items-center'>
                         <BsBuildings className='text-red-700 text-3xl' />
-                         <a className="btn btn-ghost text-xl">Wuthering Heights</a>
+                         <Link to="/" className="btn btn-ghost text-xl">Wuthering Heights</Link>
 
                     </div>
                 </div>
+                { user &&
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 font-semibold ">
                         <li><a>Our Properties</a></li>
                         <li><a>Communities</a></li>
-                        <li><a>About</a></li>
-
+                        <li><Link to='/register'>Register</Link></li>
                     </ul>
                 </div>
+                    
+                }
+                
                 <div className="navbar-end">
-                    <div className='font-semibold text-red-600 mr-4'>Name</div>
+                    <div className='font-semibold text-red-600 mr-4'>{user?.email?user?.email:<Link to='/login'></Link>}</div>
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="  btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img alt="Tailwind CSS Navbar component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                            </div>
+                            {
+                                user?.photoUrl?  <div className="w-10 rounded-full">
+                                    <img alt="Tailwind CSS Navbar component" src={user.photoUrl} />
+                                </div>:
+                                   <a href="">Logout</a>
+
+                            }
                         </div>
+
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             <li>
-                                <a className="justify-between">
+                                {
+                                    user && <a className="justify-between">
                                     Profile
-                                    <span className="badge">New</span>
-                                </a>
+                                        <span className="badge">Edit</span>
+                                    </a>
+                                }
+                                
                             </li>
-                            <li><a>Settings</a></li>
-                            <li><a>Logout</a></li>
+                            <li>{
+                                    user && <button onClick={(e)=>handleLogout(e)} className='bg-green-600 text-white hover:bg-red-500'>
+                                    Logout
+                                </button>
+                                }
+
+                            </li>
                         </ul>
                     </div>
                 </div>

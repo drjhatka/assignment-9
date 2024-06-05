@@ -1,16 +1,37 @@
+
 import { FaGithub, FaGoogle } from "react-icons/fa6";
 import {Link} from 'react-router-dom'
-const handleLogin = (event)=>{
-    event.preventDefault()
-    const data = new FormData(event.target)
-    console.log(data.get('email'),data.get('password'))
+import { AuthContext } from "./AuthProvidex";
+import { useContext } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
-}
+
+
 
 function Login() {
+    const {createUser, setUser, userLogIn} = useContext(AuthContext);
+    const handleLogin = (event)=>{
+        event.preventDefault()
+        const data = new FormData(event.target)
+       // console.log(data.get('email'),data.get('password'))
+          //validate password  
+          if(!/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(data.get('password'))){
+            toast('Password must be more than 6 characters long & Must have uppercase and lowercase letter! ')
+         }//end if
+         
+         else{
+            //sign in existing user
+            userLogIn(data.get('email'), data.get('password')).then(user=>setUser(user)).catch(error=>{
+                //notify user
+                toast(error)
+                //redirect to homepage
+            })
+         }//end else
+    }// end function
     return (
         
         <div className="hero  bg-base-200">
+            <ToastContainer />
             
             <div style={{height:'600px'}} className="hero-content  lg:flex-col"> 
                 <div className="text-center lg:text-left">

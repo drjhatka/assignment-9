@@ -5,18 +5,10 @@ import { AuthContext } from './AuthProvidex'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
-
-
 function Register() {
     const {createUser, setUser} = useContext(AuthContext);
-
-    const [error, setError] =useState('');
-    const [success, setSuccess] = useState('');
     const handleRegister = (e)=>{
         e.preventDefault();
-        //setError('')
-        setSuccess('')
         const fields = [e.target.name.value,
                         e.target.photo_url.value,
                         e.target.email.value,
@@ -25,18 +17,14 @@ function Register() {
         //validate password  
         if(!/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(fields[3])){
             toast('Password must be more than 6 characters long & Must have uppercase and lowercase letter! ')
-            setError('Password must be more than 6 characters long & Must have uppercase and lowercase letter! ')
-            
          }
          
          else{createUser(fields[2],fields[3]).then((user)=>
             {
                 setUser(user)
-                setSuccess('User created successfully!')
                 toast('User Created Successfully')
             }
          ).catch((error)=>{
-            setError(error.message)
             toast(error.message)
          })
          }
