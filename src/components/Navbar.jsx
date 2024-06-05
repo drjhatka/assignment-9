@@ -52,14 +52,14 @@ function Navbar() {
                 }
                 
                 <div className="navbar-end">
-                    <div className='font-semibold text-red-600 mr-4'>{user?.email}</div>
+                    {/* <div className='font-semibold text-red-600 mr-4'>{user?.email}</div> */}
                     <div className="dropdown dropdown-end">
                         {user &&
                         <div tabIndex={0} role="button" className="  btn btn-ghost btn-circle avatar">
                             {
                                 user?.photoUrl?  <div className="w-10 rounded-full">
                                     <img alt="Tailwind CSS Navbar component" src={user?.photoUrl} />
-                                </div>:''
+                                </div>:<h1>{user.email}</h1>  
 
                             }
                         </div>

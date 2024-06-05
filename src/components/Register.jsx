@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import { AuthContext } from './AuthProvider'
-
+import Navbar from './Navbar';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaRegEye } from "react-icons/fa";
@@ -27,7 +27,7 @@ function Register() {
             {
                 setUser(user)
                 toast('User Created Successfully')
-                navigate('/login')
+                setTimeout(()=>navigate('/login'),1000)
             }
          ).catch((error)=>{
             toast(error.message)
@@ -35,12 +35,14 @@ function Register() {
          }
     }
     return (
+        <>
+            <Navbar></Navbar>
         <div>
             <ToastContainer />
 
             <div className="hero  bg-base-200">
                 
-                <div style={{height:'800px'}} className="hero-content  flex-col"> 
+                <div style={{height:'600px'}} className="hero-content  flex-col"> 
                     <div className="text-center lg:text-left">
                             <h1 className="text-2xl font-bold">Register Now</h1>
                     </div>
@@ -90,6 +92,7 @@ function Register() {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

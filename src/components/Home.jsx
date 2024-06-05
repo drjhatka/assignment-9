@@ -8,6 +8,7 @@ function Home() {
     console.log(estates)
     return (
         <div className="border-2">
+            <Navbar></Navbar>
             <Slider></Slider>
             <Outlet></Outlet>
         </div>

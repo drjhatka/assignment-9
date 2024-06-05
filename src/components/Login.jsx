@@ -3,6 +3,7 @@ import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from "react-icons/fa6";
 import {Link, Navigate, useLocation, useNavigate, useNavigation} from 'react-router-dom'
 import { AuthContext } from "./AuthProvider";
 import { useContext, useEffect, useState } from "react";
+import Navbar from "./Navbar";
 import { ToastContainer, toast } from "react-toastify";
 
 
@@ -12,7 +13,10 @@ function Login() {
     const [visible, setVisible] = useState(false)
     const navigate = useNavigate()
     const location = useLocation()
-    const {createUser, setUser, userLogIn} = useContext(AuthContext);
+    const {user, setUser, userLogIn} = useContext(AuthContext);
+    if(user){
+        return <Navigate to="/"></Navigate>
+    }
     const handleLogin = (event)=>{
         event.preventDefault()
         const data = new FormData(event.target)
@@ -38,6 +42,7 @@ function Login() {
     }// end function
     return (
         
+          <>  <Navbar></Navbar>
         <div className="hero  bg-base-200">
             <ToastContainer />
             
@@ -87,6 +92,7 @@ function Login() {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 
