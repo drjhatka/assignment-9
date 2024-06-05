@@ -54,7 +54,7 @@ function Navbar() {
                 <div className="navbar-end">
                     {
                         user &&
-                        <div className='flex flex-col font-semibold  mr-4 border-r-2 border-l-2 text-lg   bg-[#FF5733] justify-center text-center text-white border-t-2 border-b-2 px-10 rounded border-b-blue-400'><h1>Hello {user?.displayName? user?.displayName : user?.email}! </h1> <small>Click the image to update profile</small></div> 
+                        <div  className='hidden md:flex flex-col font-semibold  mr-4 border-r-2 border-l-2 text-lg   bg-[#FF5733] justify-center text-center text-white border-t-2 border-b-2 px-10 rounded border-b-blue-400'><h1>Hello {user?.displayName? user?.displayName : user?.email}! </h1> <small className='text-xs'>Click the image to update profile or signout</small></div> 
                     }
                     <div className="dropdown dropdown-end">
                         {user &&

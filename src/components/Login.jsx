@@ -5,7 +5,7 @@ import { AuthContext } from "./AuthProvider";
 import { useContext, useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { ToastContainer, toast } from "react-toastify";
-import { GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
 
 
@@ -13,6 +13,7 @@ import { GoogleAuthProvider } from "firebase/auth";
 function Login() {
     const {user, setUser, userLogIn, externalLogin} = useContext(AuthContext);
     const googleProvider= new GoogleAuthProvider()
+    const gitProvider = new GithubAuthProvider()
     const [visible, setVisible] = useState(false)
     const navigate = useNavigate()
     const location = useLocation()
@@ -44,7 +45,7 @@ function Login() {
     }// end function
 
     const handleExternalLogin=(provider)=>{
-        externalLogin(provider)
+        externalLogin(provider).then().catch(error=>toast(error.message))
     }
     return (
         
@@ -92,7 +93,7 @@ function Login() {
                             <div className="font-bold text-center">Or Login using</div>
                             <div className="flex gap-5 justify-center">
                                 <button onClick={()=>handleExternalLogin(googleProvider)} className="border-2 px-2 py-2 rounded-lg bg-red-400 text-white font-semibold"> <FaGoogle></FaGoogle></button>
-                                <button className="border-2 px-2 py-2 rounded-lg bg-blue-400 text-white font-semibold"><FaGithub></FaGithub></button>
+                                <button onClick={()=>handleExternalLogin(gitProvider)}className="border-2 px-2 py-2 rounded-lg bg-blue-400 text-white font-semibold"><FaGithub></FaGithub></button>
                             </div>
                         </div>
                 </div>
