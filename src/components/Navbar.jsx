@@ -4,18 +4,17 @@ import { AuthContext } from './AuthProvider';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 function Navbar() {
+  
     const {user, logOut} = useContext(AuthContext)
+    console.log(user.email)
     const navigate = useNavigate()
     
     const handleLogout= ()=>{
         //logout redirect to login page
         logOut()
-        navigate('/login')
-        
-           // return <Navigate to='/login'></Navigate>
-
+        navigate('/login')  
+        // return <Navigate to='/login'></Navigate>
     }
-    //console.log(user?user:'null at')
     return (
         <div className=' bg-base-200'>
             <div className="navbar bg-base-100">
@@ -47,14 +46,13 @@ function Navbar() {
                     <ul className="menu menu-horizontal px-1 font-semibold ">
                         <li><a>Our Properties</a></li>
                         <li><a>Communities</a></li>
-                        <li><Link to='/register'>Register</Link></li>
                     </ul>
                 </div>
                     
                 }
                 
                 <div className="navbar-end">
-                    <div className='font-semibold text-red-600 mr-4'>{user?.email?user?.email:<Link to='/login'></Link>}</div>
+                    <div className='font-semibold text-red-600 mr-4'>{user.email}</div>
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="  btn btn-ghost btn-circle avatar">
                             {

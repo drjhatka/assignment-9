@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { AuthContext } from './AuthProvider'
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function Register() {
     const {createUser, setUser} = useContext(AuthContext);
     const [visible, setVisible] = useState(false)
+    const navigate = useNavigate()
     const handleRegister = (e)=>{
         e.preventDefault();
         const fields = [e.target.name.value,
@@ -24,6 +25,7 @@ function Register() {
             {
                 setUser(user)
                 toast('User Created Successfully')
+                navigate('/login')
             }
          ).catch((error)=>{
             toast(error.message)

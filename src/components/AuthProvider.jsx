@@ -34,11 +34,12 @@ function AuthProvider({children}) {
     useEffect(()=>{
         const unsubsribe = onAuthStateChanged(auth,(currentUser)=>{
                 setUser(currentUser);
+                console.log(currentUser)
                 setLoading(false)
             })
         
         return ()=>{unsubsribe()}
-    },[])
+    },[user])
     const authInfo ={
         user,
         createUser,

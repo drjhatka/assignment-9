@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom'
 function Root() {
     return (
         <div>
-            <Navbar></Navbar>
+            
             <Outlet></Outlet>
             <Footer></Footer>
         </div>
