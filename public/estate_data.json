@@ -10,7 +10,7 @@
         "area": "1200 sq ft",
         "location": "Los Angeles, California",
         "facilities": ["2 Bedrooms", "Floor-to-Ceiling Windows", "Fitness Center", "24/7 Security"],
-        "image": "modern_condo.jpg"
+        "image": "images/h1.jpg"
       },
       {
         "id": 2,
@@ -22,7 +22,7 @@
         "area": "2800 sq ft",
         "location": "Miami, Florida",
         "facilities": ["4 Bedrooms", "Swimming Pool", "Chef's Kitchen", "Outdoor BBQ Area"],
-        "image": "family_home.jpg"
+        "image": "images/h2.jpeg"
       },
       {
         "id": 3,
@@ -34,7 +34,7 @@
         "area": "6000 sq ft",
         "location": "Manhattan, New York",
         "facilities": ["5 Bedrooms", "Private Elevator", "Rooftop Terrace", "Home Automation System"],
-        "image": "luxury_penthouse.jpg"
+        "image": "images/h3.jpg"
       },
       {
         "id": 4,
@@ -46,7 +46,7 @@
         "area": "1500 sq ft",
         "location": "Asheville, North Carolina",
         "facilities": ["2 Bedrooms", "Cozy Fireplace", "Garden", "Deck"],
-        "image": "countryside_cottage.jpg"
+        "image": "images/h4.jpg"
       },
       {
         "id": 5,
@@ -58,7 +58,7 @@
         "area": "3500 sq ft",
         "location": "Charleston, South Carolina",
         "facilities": ["3 Bedrooms", "Gourmet Kitchen", "Courtyard Garden", "Library"],
-        "image": "historic_townhouse.jpg"
+        "image": "images/h5.jpg"
       },
       {
         "id": 6,
@@ -70,7 +70,7 @@
         "area": "5000 sq ft",
         "location": "Maui, Hawaii",
         "facilities": ["6 Bedrooms", "Beachfront Deck", "Spa", "Home Theater"],
-        "image": "beachfront_villa.jpg"
+        "image": "images/h6.jpg"
       },
       {
         "id": 7,
@@ -82,7 +82,7 @@
         "area": "1800 sq ft",
         "location": "Portland, Oregon",
         "facilities": ["1 Bedroom", "Exposed Brick Walls", "Modern Kitchen", "Private Balcony"],
-        "image": "downtown_loft.jpg"
+        "image": "images/h7.jpg"
       },
       {
         "id": 8,
@@ -94,7 +94,7 @@
         "area": "2000 sq ft",
         "location": "Denver, Colorado",
         "facilities": ["3 Bedrooms", "Wraparound Deck", "Stone Fireplace", "Hiking Trails Nearby"],
-        "image": "mountain_cabin.jpg"
+        "image": "images/h8.jpg"
       },
       {
         "id": 9,
@@ -106,7 +106,7 @@
         "area": "1000 sq ft",
         "location": "San Francisco, California",
         "facilities": ["2 Bedrooms", "Balcony with City Views", "Fitness Center", "Pet-Friendly"],
-        "image": "urban_apartment.jpg"
+        "image": "images/h1.jpg"
       }
     ]
   }

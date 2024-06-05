@@ -9,8 +9,11 @@ function Home() {
     return (
         <div className="border-2">
             <Navbar></Navbar>
-            <Slider></Slider>
-            <Outlet></Outlet>
+            <div className='w-4/5 mx-auto'>
+                <Slider estates={estates.slice(0,4)}></Slider>
+                <Outlet ></Outlet>
+
+            </div>
         </div>
     )
 }
