@@ -1,21 +1,65 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
+import Navbar from './Navbar'
+import { AuthContext } from './AuthProvider'
+import { ToastContainer, toast } from 'react-toastify'
 
 function UpdateUser() {
+    const {user, profileUpdate} = useContext(AuthContext)
+    
+    const handleProfileUpdate = (e)=>{
+        e.preventDefault()
+        const data = new FormData(e.target)
+        profileUpdate(data.get('displayName'),data.get('photoUrl')).then(()=>{
+        toast('Profile Updated Successfully!')
+        }).catch(error=>{
+            toast(error.message)
+        })
+    }
     return (
-        <div>
-            <form>
-                <label className="input input-bordered flex items-center gap-2">
-                    <input type="text" className="grow" placeholder="Search" />
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
-                </label>
 
+        <>
+        <ToastContainer></ToastContainer>
+        <Navbar></Navbar>
+        <div className='flex flex-col gap-5 w-2/5 mx-auto'>
+            <form className='flex flex-col gap-4' onSubmit={(e)=>handleProfileUpdate(e)}>
+                  {user?.email &&
+                    <div className="form-control">
+                        <label className="input input-bordered flex items-center gap-2">
+                            <input name='email' type="email"  className="grow" readOnly disabled value={user?.email} required />
+                    </label>
+                    </div>
+                }
+                {!user?.displayName ?
+                <div className="form-control">
+                    <label className="input input-bordered flex items-center gap-2">
+                        <input name='displayName' type="text" className="grow" placeholder="Set Display Name" required />
+                   </label>
+                </div>
+                    :
                 <label className="input input-bordered flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" /></svg>
-                    <input type="text" className="grow" placeholder="Username" />
+                   <input name='displayName' type="text"  className="grow"  defaultValue={user.displayName} required />
                 </label>
+                }
+                 {!user?.photoURL ?
+                 <>
+                <label className="input input-bordered flex items-center gap-2">
+                    <input name='photoUrl' type="text" className="grow" placeholder="Set Photo Link" required />
+                   </label>
+                 
+                 </>
+                   :
+                 <label className="input input-bordered flex items-center gap-2">
+                    <input name='photoUrl' type="text"  className="grow" defaultValue={user.photoURL} required />
+                </label>  
+                }
+                <div className='w-full flex justify-center'>
+                    <input type="submit" className="btn btn-primary" />
+                </div>
+
 
             </form>
         </div>
+        </>
     )
 }
 

@@ -32,10 +32,14 @@ const router = createBrowserRouter([
       {
         path:'/register',
         element:<Register></Register>
+      },
+      {
+        path:'update-user',
+        element:<UpdateUser></UpdateUser>
       }
       
     ]
-  },
+  }
   
 ]);
 

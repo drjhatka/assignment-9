@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { app } from '../firebase'
 import { useNavigate } from 'react-router-dom';
@@ -30,7 +30,12 @@ function AuthProvider({children}) {
              });
         }
        
-    
+    const profileUpdate = (displayName,photoUrl)=>{
+        
+        return updateProfile(auth.currentUser,{
+            displayName:displayName, photoURL:photoUrl
+        })
+    }
     useEffect(()=>{
         const unsubsribe = onAuthStateChanged(auth,(currentUser)=>{
                 setUser(currentUser);
@@ -42,11 +47,12 @@ function AuthProvider({children}) {
     },[user])
     const authInfo ={
         user,
+        loading,
         createUser,
         setUser,
         userLogIn,
         logOut,
-        loading
+        profileUpdate,
     }
     return (
        <AuthContext.Provider value ={authInfo} >

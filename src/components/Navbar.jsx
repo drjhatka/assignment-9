@@ -52,13 +52,17 @@ function Navbar() {
                 }
                 
                 <div className="navbar-end">
-                    {/* <div className='font-semibold text-red-600 mr-4'>{user?.email}</div> */}
+                    {
+                        user &&
+                        <div className='font-semibold  mr-4 border-r-2 border-l-2 text-lg  py-3 bg-[#FF5733] text-white border-t-2 border-b-2 px-10 rounded border-b-blue-400'>{user?.displayName? user?.displayName : user?.email}</div> 
+                    }
                     <div className="dropdown dropdown-end">
                         {user &&
                         <div tabIndex={0} role="button" className="  btn btn-ghost btn-circle avatar">
                             {
-                                user?.photoUrl?  <div className="w-10 rounded-full">
-                                    <img alt="Tailwind CSS Navbar component" src={user?.photoUrl} />
+                                user?.photoURL ?  
+                                <div className=" w-30 border-2 border-green-800 rounded-full">
+                                    <img alt="Photo" src={user?.photoURL} />
                                 </div>:<h1>{user.email}</h1>  
 
                             }
@@ -69,7 +73,7 @@ function Navbar() {
                         
                             <li>
                                 {
-                                    user && <Link to="" className="justify-between">
+                                    user && <Link to="/update-user" className="justify-between">
                                     Profile
                                         <span className="badge">Edit</span>
                                     </Link>
