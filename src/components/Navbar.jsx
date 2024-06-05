@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { BsBuildings } from "react-icons/bs";
 import { AuthContext } from './AuthProvider';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { NavLink,Link, Navigate, useNavigate } from 'react-router-dom';
 
 function Navbar() {
   
@@ -44,8 +44,10 @@ function Navbar() {
                 { user &&
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 font-semibold ">
-                        <li><a>Our Properties</a></li>
-                        <li><a>Communities</a></li>
+                        <li><NavLink to="/">Home</NavLink></li>
+                        <li><NavLink to="/properties">Our Properties</NavLink></li>
+                        <li><NavLink to="/update-user" > Update Profile</NavLink></li>
+                        
                     </ul>
                 </div>
                     
@@ -62,20 +64,20 @@ function Navbar() {
                             {
                                 user?.photoURL ?  
                                 <div className=" w-30 border-2 border-green-800 rounded-full">
-                                    <img alt="Photo" src={user?.photoURL} />
+                                    <img title={user?.displayName} alt="Photo" src={user?.photoURL} />
                                 </div>:<h1>{user.email}</h1>  
 
                             }
                         </div>
                         }
                         {   user ?
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                        <ul tabIndex={0} className="menu gap-3 menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                         
                             <li>
                                 {
-                                    user && <Link to="/update-user" className="justify-between">
-                                    Profile
-                                        <span className="badge">Edit</span>
+                                    user && <Link to="/update-user" className="justify-between hover:bg-red-400 bg-green-800 text-white">
+                                        Edit Profile
+                                        <span className="badge bg-red-400 text-white px-2">Edit</span>
                                     </Link>
                                 }
                                 
