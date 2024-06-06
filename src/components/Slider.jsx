@@ -10,7 +10,7 @@ function Slider({ estates }) {
                 <div className='absolute bottom-10 text-white  text-center w-full flex flex-col gap-2 justify-center items-center'>
                     <h1 className='text-4xl font-bold'>{estates[0].estate_title}</h1>
                     <h1 className='w-[75%] flex text-xl items-center text-wrap text-white '>{estates[0].description}...</h1>
-                    <Link className='hover:bg-green-600 text-white bg-[#FF5733] btn' to='estate-details'>View Property</Link>
+                    <Link className='hover:bg-green-600 text-white bg-[#FF5733] btn' to={'/estate-details/'+estates[0].id}>View Property</Link>
                 </div>
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                     <a href="#slide4" className="btn btn-circle">❮</a>
@@ -22,7 +22,7 @@ function Slider({ estates }) {
                 <div className='absolute bottom-10 text-white  text-center w-full flex flex-col gap-2 justify-center items-center'>
                     <h1 className='text-4xl font-bold'>{estates[1].estate_title}</h1>
                     <h1 className='w-[75%] flex text-xl items-center text-wrap text-white '>{estates[1].description}...</h1>
-                    <Link className='hover:bg-green-600 text-white bg-[#FF5733] btn' to='estate-details'>View Property</Link>
+                    <Link className='hover:bg-green-600 text-white bg-[#FF5733] btn' to={'/estate-details/'+estates[1].id}>View Property</Link>
                 </div>
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                     <a href="#slide1" className="btn btn-circle">❮</a>
@@ -34,7 +34,7 @@ function Slider({ estates }) {
              <div className='absolute bottom-10 text-white  text-center w-full flex flex-col gap-2 justify-center items-center'>
                     <h1 className='text-4xl font-bold'>{estates[2].estate_title}</h1>
                     <h1 className='w-[75%] flex text-xl items-center text-wrap text-white '>{estates[2].description}...</h1>
-                    <Link className='hover:bg-green-600 text-white bg-[#FF5733] btn' to='estate-details'>View Property</Link>
+                    <Link className='hover:bg-green-600 text-white bg-[#FF5733] btn' to={'/estate-details/'+estates[2].id}>View Property</Link>
                 </div>
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                     <a href="#slide2" className="btn btn-circle">❮</a>
@@ -46,7 +46,7 @@ function Slider({ estates }) {
                 <div className='absolute bottom-10 text-white  text-center w-full flex flex-col gap-2 justify-center items-center'>
                     <h1 className='text-4xl font-bold'>{estates[3].estate_title}</h1>
                     <h1 className='w-[75%] flex text-xl items-center text-wrap text-white '>{estates[3].description}...</h1>
-                    <Link className='hover:bg-green-600 text-white bg-[#FF5733] btn' to='estate-details'>View Property</Link>
+                    <Link className='hover:bg-green-600 text-white bg-[#FF5733] btn' to={'/estate-details/'+estates[3].id}>View Property</Link>
                 </div>
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                     <a href="#slide3" className="btn btn-circle">❮</a>

@@ -13,6 +13,7 @@ import Register from './components/Register.jsx';
 import AuthProvider from './components/AuthProvider.jsx';
 import PrivateRoute from './PrivateRoute.jsx';
 import UpdateUser from './components/UpdateUser.jsx';
+import EstateDetails from './components/EstateDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
       {
         path:'/',
         element:<PrivateRoute><Home></Home></PrivateRoute>,
-        loader:()=> fetch('estate_data.json').then(res=>res.json()).then(data=> data.estate_cards),
+        loader:async() => fetch('../estate_data.json').then(res=>res.json()).then(data=> data.estate_cards),
       },
       
       {
@@ -36,9 +37,22 @@ const router = createBrowserRouter([
       {
         path:'update-user',
         element:<UpdateUser></UpdateUser>
+      },
+      {
+        path:'/estate-details/:id',
+        element:<EstateDetails></EstateDetails>,
+       // loader:async() => fetch('estate_data.json').then(res=>res.json()).then(data=> data.estate_cards),
+    
       }
-      
-    ]
+        
+    ],
+    
+  },
+  {
+    path:'/estate-details/:id',
+    element:<EstateDetails></EstateDetails>,
+    loader:async() => fetch('../estate_data.json').then(res=>res.json()).then(data=> data.estate_cards),
+
   }
   
 ]);

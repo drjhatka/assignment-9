@@ -6,7 +6,8 @@ import { Outlet, useLoaderData } from 'react-router-dom'
 import EstateCard from './EstateCard'
 function Home() {
     const estates = useLoaderData();
-    console.log(estates)
+    
+    //console.log(estates)
     return (
         <div className="border-2">
                 <Navbar></Navbar>

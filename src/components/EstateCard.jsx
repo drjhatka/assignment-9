@@ -33,7 +33,7 @@ function EstateCard({estate}) {
                 <ul>
                 {
                     estate.facilities.map((facility)=>{
-                            return <li className='shadow-md mt-2 flex font-semibold gap-4 items-center'><TiTickOutline className='text-blue-900'></TiTickOutline>{facility}</li>
+                            return <li key={Math.random()*100} className=' text-sm shadow-md mt-2 flex font-semibold gap-4 items-center'><TiTickOutline className='text-blue-900'></TiTickOutline>{facility}</li>
                         })
                     }
                     </ul>
@@ -42,7 +42,7 @@ function EstateCard({estate}) {
                <small className='font-semibold '>Status: </small> <h1 className='badge bg-red-500 py-3 text-white'> {estate.status}</h1>
             </div>
             <div className='flex justify-center py-2 border-t-2'>
-            <Link className='hover:bg-green-600 text-white bg-[#FF5733] btn' to='estate-details'>View Property</Link>
+            <Link className='hover:bg-green-600 text-white bg-[#FF5733] btn' to={'/estate-details/'+estate.id}>View Property</Link>
 
             </div>
         </div>
