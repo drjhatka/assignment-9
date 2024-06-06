@@ -1,6 +1,6 @@
 
-# Wuther# Wuthering Heights-A radical shift in contemporary Living!
-## - As good as a living place as Mother's Lap!
+## Wuthering Heights-A radical shift in contemporary Living!
+# - As good as a living place as Mother's Lap!
 
 
 ## Features
