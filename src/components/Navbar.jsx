@@ -24,9 +24,7 @@ function Navbar() {
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             <li><Link to="/">Home</Link></li>
-                            <li>
-                                <Link to="">Our Properties</Link>
-                            </li>
+                            
                             <li><Link>Update Profile</Link></li>
                         </ul>
                     </div>
@@ -38,9 +36,9 @@ function Navbar() {
                 </div>
                 { user &&
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1 font-semibold ">
+                    <ul className="menu menu-horizontal px-1 font-semibold gap-5 ">
                         <li><NavLink to="/">Home</NavLink></li>
-                        <li><NavLink to="/properties">Our Properties</NavLink></li>
+
                         <li><NavLink to="/update-user" > Update Profile</NavLink></li>
                         
                     </ul>

@@ -25,6 +25,7 @@ function Register() {
          
          else{createUser(fields[2],fields[3]).then((user)=>
             {
+                
                 setUser(user)
                 toast('User Created Successfully')
                 setTimeout(()=>navigate('/login'),1000)

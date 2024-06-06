@@ -17,5 +17,3 @@
  ## NPM Packages used for challange tasks! Well, it was quite a challenge!
  - axios
 
- ## NPM Packages used for challange tasks! Well, it was quite a challenge!
- - axios

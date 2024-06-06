@@ -14,11 +14,13 @@ import AuthProvider from './components/AuthProvider.jsx';
 import PrivateRoute from './PrivateRoute.jsx';
 import UpdateUser from './components/UpdateUser.jsx';
 import EstateDetails from './components/EstateDetails.jsx';
+import ErrorPage from './components/ErrorPage.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement:<ErrorPage></ErrorPage>,
     children:[
       {
         path:'/',
@@ -40,7 +42,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/estate-details/:id',
-        element:<EstateDetails></EstateDetails>,
+        element:<PrivateRoute><EstateDetails></EstateDetails></PrivateRoute>,
        loader:async() => fetch('../estate_data.json').then(res=>res.json()).then(data=> data.estate_cards),
     
       }
