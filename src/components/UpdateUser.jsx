@@ -31,7 +31,7 @@ function UpdateUser() {
         <>
         <ToastContainer></ToastContainer>
         <Navbar></Navbar>
-        <div data-aos="flip-right" data-aos-duration="400" className='flex mt-10 flex-col gap-5 w-2/5 mx-auto mb-4 rounded-lg border-2 shadow-lg py-2 border-green-700 px-4'>
+        <div data-aos="flip-right" data-aos-duration="400" className='flex mt-10 flex-col gap-5 lg:w-2/5 mx-auto mb-4 rounded-lg border-2 shadow-lg py-2 border-green-700 px-4'>
             <div className='py-3 border-b-4 border-green-600'>
                 <h1 className='text-3xl'>Update your profile</h1>
             </div>
