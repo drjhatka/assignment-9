@@ -2,8 +2,10 @@ import { useContext, useEffect, useState } from "react"
 import { useLoaderData, useParams } from "react-router-dom"
 import Navbar from "./Navbar"
 import { AuthContext } from "./AuthProvider"
+import DynamicTitle from "../DynamicTitle"
 
 function EstateDetails() {
+    DynamicTitle('Property Detail')
     const {id} = useParams()
     const estates = useLoaderData()
     console.log(estates)

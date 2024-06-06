@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import 'animate.css'
 function Slider({ estates }) {
     return (
         <>
-        <div className="rounded-2xl mt-5 carousel w-full" data-bs-interval="true">
+        <div className=" rounded-2xl mt-5 carousel w-full" data-bs-interval="true">
             <div id="slide1" className=" carousel-item relative w-full">
                 <img src={estates[0].image} className="w-full  brightness-75 h-96"  />
                 <div className='absolute bottom-10 text-white  text-center w-full flex flex-col gap-2 justify-center items-center'>

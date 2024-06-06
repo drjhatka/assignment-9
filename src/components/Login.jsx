@@ -6,11 +6,13 @@ import { useContext, useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { ToastContainer, toast } from "react-toastify";
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import DynamicTitle from "../DynamicTitle";
 
 
 
 
 function Login() {
+    DynamicTitle('Login')
     const {user, setUser, userLogIn, externalLogin} = useContext(AuthContext);
     const googleProvider= new GoogleAuthProvider()
     const gitProvider = new GithubAuthProvider()

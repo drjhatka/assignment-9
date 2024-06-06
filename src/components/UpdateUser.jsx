@@ -1,9 +1,20 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Navbar from './Navbar'
 import { AuthContext } from './AuthProvider'
 import { ToastContainer, toast } from 'react-toastify'
+import DynamicTitle from '../DynamicTitle'
+import Aos from 'aos'
+import 'aos/dist/aos.css' 
+import { useForm } from "react-hook-form"
 
 function UpdateUser() {
+    const {register,  formState:{errors}} = useForm()
+
+    useEffect(()=>{
+        Aos.init()
+    },[])
+
+    DynamicTitle('Update Profile')
     const {user, profileUpdate} = useContext(AuthContext)
     
     const handleProfileUpdate = (e)=>{
@@ -20,24 +31,24 @@ function UpdateUser() {
         <>
         <ToastContainer></ToastContainer>
         <Navbar></Navbar>
-        <div className='flex mt-10 flex-col gap-5 w-2/5 mx-auto'>
+        <div data-aos="flip-right" data-aos-duration="400" className='flex mt-10 flex-col gap-5 w-2/5 mx-auto mb-4 rounded-lg border-2 shadow-lg py-2 border-green-700 px-4'>
             <div className='py-3 border-b-4 border-green-600'>
-                <h1 className='text-3xl'>Update your prfile</h1>
+                <h1 className='text-3xl'>Update your profile</h1>
             </div>
             <form className='flex flex-col gap-4' onSubmit={(e)=>handleProfileUpdate(e)}>
                   {user?.email &&
                     <div className="form-control">
                         <label htmlFor="email" className='text-xl font-semibold text-[#FF5733] border-b-2 mb-2 border-[#FF5733]  px-2'>Email</label>
                         <label className="input input-bordered flex items-center gap-2">
-                            <input name='email' type="email"  className="grow" readOnly disabled value={user?.email} required />
+                            <input {...register("email",{required:true})} type="email"  className="grow" readOnly disabled value={user?.email}  />
                     </label>
                     </div>
                 }
                 {!user?.displayName ?
                 <div className="form-control">
-                        <label htmlFor="email" className='text-xl font-semibold text-[#FF5733] border-b-2 border-[#FF5733]  px-2'>Email</label>
+                        <label htmlFor="email" className='text-xl font-semibold text-[#FF5733] border-b-2 border-[#FF5733]  px-2'>Display Name</label>
                     <label className="input input-bordered flex items-center gap-2">
-                        <input name='displayName' type="text" className="grow" placeholder="Set Display Name" required />
+                        <input {...register("displayName",{required:true})} type="text" className="grow" placeholder="Set Display Name" />
                    </label>
                 </div>
                     :
@@ -45,7 +56,7 @@ function UpdateUser() {
                         <label htmlFor="email" className='text-xl font-semibold text-[#FF5733] border-b-2  border-[#FF5733]  px-2'>Display Name</label>
 
                 <label className="input input-bordered flex items-center gap-2">
-                   <input name='displayName' type="text"  className="grow"  defaultValue={user.displayName} required />
+                   <input {...register("displayName",{required:"This is a required Field"})} type="text"  className="grow"  defaultValue={user.displayName} />
                 </label>
                     </>
                 }

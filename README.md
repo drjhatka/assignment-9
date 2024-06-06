@@ -14,6 +14,8 @@
 ## Visit Our Live site!
  <https://github.com/joemccann/dillinger/tree/master/plugins/googledrive/README.md>
  
- ## NPM Packages used for challange tasks! Well, it was quite a challenge!
- - axios
+ ## NPM Packages used for challange tasks!
+ - Aos Package
+ - Animate.css
+ - React Hook Form
 

@@ -6,8 +6,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaRegEye } from "react-icons/fa";
 import { FaEye, FaEyeSlash } from 'react-icons/fa6';
+import DynamicTitle from '../DynamicTitle';
 
 function Register() {
+    DynamicTitle('Register')
     const {createUser, setUser} = useContext(AuthContext);
     const [visible, setVisible] = useState(false)
     const navigate = useNavigate()

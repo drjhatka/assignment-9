@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BsBuilding } from "react-icons/bs";
 import { GrMapLocation } from "react-icons/gr";
 import { Link } from 'react-router-dom';
 import { TiTickOutline } from "react-icons/ti";
+import Aos from 'aos'
+import 'aos/dist/aos.css' 
 
 function EstateCard({estate}) {
+    useEffect(()=>{
+        Aos.init()
+    },[])
     return (
-        <div className="flex flex-col gap-2  bg-slate-100 rounded-lg px-4 py-4 border-2">
-            <div className='flex  max-h-[50%] justify-center flex-grow '>
-                <img className='min-w-full max-h-[100%] cover ' src={estate.image} alt="" />
+        <div data-aos="flip-left" data-aos-duration="2000"  className="flex flex-col gap-2  bg-slate-100 rounded-lg px-4 py-4 border-2">
+            <div   className='flex  max-h-[50%] justify-center flex-grow '>
+                <img  className='min-w-full max-h-[100%] cover ' src={estate.image} alt="" />
             </div>
             <div className='pb-2 border-b-2 font-semibold text-[#900C3F]'>
                 Price: {estate.price}
