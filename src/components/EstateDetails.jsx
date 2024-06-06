@@ -5,16 +5,14 @@ import { AuthContext } from "./AuthProvider"
 
 function EstateDetails() {
     const {id} = useParams()
-    //const [estates, setEstates] = useState([])
-    //const { jsonData}= useContext(AuthContext)
-    
-    //console.log(data)
-   // const estate = estates.find((estate)=>id==estate.id)
+    const estates = useLoaderData()
+    console.log(estates)
+   const estate = estates.find((estate)=>id==estate.id)
     return (
         <div>
-            <Navbar></Navbar>
+             <Navbar></Navbar>
             <div>
-                {/* <h1>{estate.estate_title}</h1> */}
+                <h1>{estate.estate_title}</h1>
             </div>
         </div>
     )
