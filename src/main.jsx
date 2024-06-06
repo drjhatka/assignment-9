@@ -15,6 +15,7 @@ import PrivateRoute from './PrivateRoute.jsx';
 import UpdateUser from './components/UpdateUser.jsx';
 import EstateDetails from './components/EstateDetails.jsx';
 import ErrorPage from './components/ErrorPage.jsx';
+import MemberAccess from './components/MemberAccess.jsx';
 
 const router = createBrowserRouter([
   {
@@ -38,13 +39,17 @@ const router = createBrowserRouter([
       },
       {
         path:'update-user',
-        element:<UpdateUser></UpdateUser>
+        element:<PrivateRoute><UpdateUser></UpdateUser></PrivateRoute>
       },
       {
         path:'/estate-details/:id',
         element:<PrivateRoute><EstateDetails></EstateDetails></PrivateRoute>,
        loader:async() => fetch('../estate_data.json').then(res=>res.json()).then(data=> data.estate_cards),
     
+      },
+      {
+        path:'/member-access',
+        element:<PrivateRoute><MemberAccess></MemberAccess></PrivateRoute>
       }
         
     ],
