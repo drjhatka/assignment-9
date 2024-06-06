@@ -21,7 +21,7 @@ function EstateDetails() {
                 <div>
                     <div className="flex flex-col border-2 px-4 rounded-lg ">
                         <div className="border-b-2 py-2 ">
-                            <h1 className="text-3xl font-semibold">{estate.estate_title}</h1>
+                            <h1 className="text-3xl font-semibold">{estate.estate_title+" for "+estate.status}</h1>
                         </div>
                         <div className="py-4">
                             <p className="text-wrap font-semibold">{estate.description}</p>
