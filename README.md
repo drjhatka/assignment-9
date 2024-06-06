@@ -12,7 +12,7 @@
 - Customize the location of your choice and get the best deal!
 
 ## Visit Our Live site!
- <https:https://assignment-9-9b7a0.web.app/>
+ <https://assignment-9-9b7a0.web.app/>
  
  ## NPM Packages used for challange tasks!
  - Aos Package
