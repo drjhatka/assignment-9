@@ -17,8 +17,8 @@
         "estate_title": "Spacious Family Home with Pool",
         "segment_name": "Houses",
         "description": "Beautiful family home with a private pool and landscaped backyard. Ideal for entertaining and creating lasting memories with loved ones.",
-        "price": "$600,000",
-        "status": "sale",
+        "price": "$1600/month",
+        "status": "rent",
         "area": "2800 sq ft",
         "location": "Miami, Florida",
         "facilities": ["4 Bedrooms", "Swimming Pool", "Chef's Kitchen", "Outdoor BBQ Area"],
@@ -26,7 +26,7 @@
       },
       {
         "id": 3,
-        "estate_title": "Luxury Penthouse with Panoramic Views",
+        "estate_title": "Luxury Penthouse - Panoramic Views",
         "segment_name": "Luxury Homes",
         "description": "Exquisite penthouse offering unparalleled luxury and breathtaking panoramic views. State-of-the-art amenities and elegant design.",
         "price": "$5,000,000",
@@ -41,8 +41,8 @@
         "estate_title": "Charming Cottage in Countryside",
         "segment_name": "Houses",
         "description": "Quaint cottage nestled in the serene countryside. Rustic charm, peaceful surroundings, and close to nature trails and outdoor activities.",
-        "price": "$300,000",
-        "status": "sale",
+        "price": "$3000/month",
+        "status": "rent",
         "area": "1500 sq ft",
         "location": "Asheville, North Carolina",
         "facilities": ["2 Bedrooms", "Cozy Fireplace", "Garden", "Deck"],
@@ -58,7 +58,7 @@
         "area": "3500 sq ft",
         "location": "Charleston, South Carolina",
         "facilities": ["3 Bedrooms", "Gourmet Kitchen", "Courtyard Garden", "Library"],
-        "image": "images/h5.jpg"
+        "image": "images/h5.jpeg"
       },
       {
         "id": 6,
@@ -66,11 +66,11 @@
         "segment_name": "Luxury Homes",
         "description": "Indulge in luxurious beachfront living in this stunning villa. Private beach access, infinity pool, and unparalleled ocean views.",
         "price": "$3,500,000",
-        "status": "sale",
+        "status": "rent",
         "area": "5000 sq ft",
         "location": "Maui, Hawaii",
         "facilities": ["6 Bedrooms", "Beachfront Deck", "Spa", "Home Theater"],
-        "image": "images/h6.jpg"
+        "image": "images/h6.webp"
       },
       {
         "id": 7,
@@ -94,7 +94,7 @@
         "area": "2000 sq ft",
         "location": "Denver, Colorado",
         "facilities": ["3 Bedrooms", "Wraparound Deck", "Stone Fireplace", "Hiking Trails Nearby"],
-        "image": "images/h8.jpg"
+        "image": "images/h8.jpeg"
       },
       {
         "id": 9,

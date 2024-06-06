@@ -16,7 +16,7 @@ function Navbar() {
         // return <Navigate to='/login'></Navigate>
     }
     return (
-        <div className=' bg-base-200'>
+        <div className=' bg-base-200 shadow-md'>
             <div className="navbar bg-base-100">
                 <div className="navbar-start">
                     <div className="dropdown">
